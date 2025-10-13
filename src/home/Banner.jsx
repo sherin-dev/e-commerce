@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import productData from "../products.json"
+import { Link } from "react-router-dom";
+import SelectedCategory from "../components/SelectedCategory";
 const title = (
     <h2>Search Your One From <span>Thousand</span> of Products</h2>  
 )
@@ -22,16 +24,17 @@ const bannerList = [
 
  const Banner = () => {
     const[searchInput,setSearchInput] = useState("");
-    const[filteredProducts,setfilteredProducts] = useState("");
+    const[filteredProducts,setfilteredProducts] = useState(productData);
     // console.log(productData)
+    
     // search functionality
-
     const handleSearch = e => {
         console.log(e.target.value)
         const searchTerm = e.target.value;
         setSearchInput(searchTerm);
+
         // filtering products based on search
-        const filtered = productData.filter((product)=> product.name.tolowerCase().includes(searchTerm.tolowerCase()));
+        const filtered = productData.filter((product)=> product.name.toLowerCase().includes(searchTerm.toLowerCase()));
         setfilteredProducts(filtered);
     }
     return (
@@ -51,7 +54,7 @@ const bannerList = [
                     <ul className="lab-ul">
                         {
                             searchInput && filteredProducts.map((product, i) => <li key={i}>
-                                <link to={`/shop/${product.id}`}>{product.name}</link>
+                                <Link to={`/shop/${product.id}`}>{product.name}</Link>
                                 </li>)
                         }
                     </ul>
