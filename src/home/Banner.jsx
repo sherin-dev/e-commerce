@@ -1,10 +1,4 @@
-import React from "react";
-const Banner= ()=>{
-    return(
-        <div>
-            <p>Banner</p>
-        </div>
-    )import React, { useState } from "react";
+import React, { useState } from "react";
 import productData from "../products.json"
 const title = (
     <h2>Search Your One From <span>Thousand</span> of Products</h2>  
@@ -68,5 +62,3 @@ const bannerList = [
     )
  }
   export default Banner
-}
-export default Banner
