@@ -3,11 +3,15 @@ import './App.css'
 import Home from './home/Home'
 import Blog from './blog/Blog'
 import NavItems from './components/NavItems'
+import Footer from './components/Footer'
 function App() {
+
   return (
     <>
     <NavItems/>      
-        <Outlet/>
+    <Outlet/>
+    <Footer/>
+
     </>
   )
 }
