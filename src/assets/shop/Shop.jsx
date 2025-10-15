@@ -5,11 +5,12 @@ const showResults = "Showing 01 - 12 of 139 Results";
 import Data from " ../products.json";
 import ProductCards from './ProductCards';
 import Pagination from './Pagination';
+import ShopCategory from './ShopCategory';
 
 const Shop = () => {
     const [GridList,setGridList] = useState(true);
     const [products, setproducts] = useState(Data);
-    // console.log(products);
+    console.log(products);
 
     //pagination
     const [currentPage,setCurrentPage] = useState(1);
@@ -22,6 +23,18 @@ const Shop = () => {
     // function to change the current page
     const paginate = (pageNumber) =>{
       setCurrentPage(pageNumber)
+    };
+
+    // filter product based on category
+    const [selectedCategory,setSelectedCategory] = useState("All");
+    const menuItems = [...new Set(Data.map((Val)=>Val.category))];
+
+    const filterItem =(cuncat) => {
+      const newItem = Data.filter((newVal) =>{
+        return newVal.category === cuncat;
+      })
+      setSelectedCategory(curcat);
+      setproducts(newItem);
     }
 
     return(
@@ -47,7 +60,7 @@ const Shop = () => {
                     </div>
                     {/* product cards */}
                     <div>
-                        <ProductCards GridList={GridList} products={products}/>
+                        <ProductCards GridList={GridList} products={currentProducts}/>
                     </div>
                     <Pagination
                     productsperPage={productsperPage}
@@ -58,7 +71,16 @@ const Shop = () => {
                   </article>  
                 </div>
                  <div className='col-Ig-4 col-12'>
-                    right side
+                  <aside>
+                    <Search products={products} GridList={GridList}/>
+                   <ShopCategory 
+                   filterItem={filterItem}
+                   setItem={setproducts}
+                   menuItems={menuItems}
+                   setproducts={setproducts}
+                   selectedCategory={selectedCategory}
+                   /> 
+                  </aside>
                 </div>
             </div>
          </div>  
