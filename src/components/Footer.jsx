@@ -123,14 +123,7 @@ const footerbottomList = [ { text: 'Faculty', link: '#', }, { text: 'Staff', lin
             <div className="footer-bottom">
                 <div className="container">
                     <div className="section-wrapper">
-                        <p>&copy; 2023 <Link to="/">Shop Cart</Link>Designed by <a href="/" target="_blank">XYZ</a></p>
-                        <div className="footer-bottom-list">
-                            {
-                                footerbottomList.map((val,i)=>{
-                                    <a href="#" key={i}>{val.text}</a>
-                                })
-                            }
-                        </div>
+                        <p>&copy; 2023 <Link to="/">Shop Cart</Link>Designed by <a href="/" target="_blank">XYZ</a></p>                        
                     </div>
                 </div>
             </div>
