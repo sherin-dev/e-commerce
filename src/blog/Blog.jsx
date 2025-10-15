@@ -1,9 +1,10 @@
-import React from "react";
-const Blog=()=>{
-    return(
-        <>
-        <h2>Blog</h2>
-        </>
+import React from 'react'
+ const Blog = () => {
+    return (
+      <div>
+        <pageHeader title="Blog Page" curPage="Blogs"/>
+       
+      </div>
     )
-}
-export default Blog
+ }
+ export default Blog

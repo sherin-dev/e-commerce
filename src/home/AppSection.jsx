@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 const btnText = "Sign up for Free";
 const title = "Shop Anytime, Anywhere ";
 const desc ="Take shop on your any device with our app & learn all time what you want.Just download & install & start to learn"
@@ -8,7 +9,7 @@ const AppSection = () => {
         <div className='app-section padding-tb'>
             <div className='container'>
                 <div className='section-header text-center'>
-                  <link to="/sign-up" className='lab-btn mb-4'>{btnText}</link>
+                  <Link to="/sign-up" className='lab-btn mb-4'>{btnText}</Link>
                   <h2 className='title'>{title}</h2>
                   <p>{desc}</p>
                 </div>

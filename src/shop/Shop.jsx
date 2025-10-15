@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import PageHeader from '../components/PageHeader';
-
+import { Search } from './Search';
 const showResults = "Showing 01 - 12 of 139 Results";
-import Data from " ../products.json";
+import Data from "../products.json"
 import ProductCards from './ProductCards';
 import Pagination from './Pagination';
 import ShopCategory from './ShopCategory';
@@ -39,7 +39,7 @@ const Shop = () => {
 
     return(
         <div>
-            <pageHeader title="Our Shop Page" curPage="Shop"/>
+            <PageHeader title="Our Shop Page" curPage="Shop"/>
              {/* shop page */}
         <div className='shop-page padding-tb'>
           <div className="container">

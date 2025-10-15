@@ -1,4 +1,8 @@
 import React, { useState } from 'react'
+<<<<<<< HEAD:src/assets/shop/Search.jsx
+=======
+import { Link } from 'react-router-dom';
+>>>>>>> 0865d544c5fa719a986ab0602db7c36d9aa71a03:src/shop/Search.jsx
 export const Search = ({products, GridList}) =>{
     const [ searchTerm, setSearchTerm] = useState("");
     const filteredProducts = products.filter((products) => products.name.toLowerCase().includes(searchTerm.toLowerCase()));
@@ -14,7 +18,11 @@ export const Search = ({products, GridList}) =>{
         {/* showing search result */}
         <div>
             {
+<<<<<<< HEAD:src/assets/shop/Search.jsx
                 setTerm && filteredProducts.map((product) => (
+=======
+                searchTerm && filteredProducts.map((product) => (
+>>>>>>> 0865d544c5fa719a986ab0602db7c36d9aa71a03:src/shop/Search.jsx
                     <Link key={product.id} to={`/shop/${product.id}`}>
                         <div className='d-flex gap-2'>
                            <div>
@@ -36,4 +44,8 @@ export const Search = ({products, GridList}) =>{
       </div>
     )
    
+<<<<<<< HEAD:src/assets/shop/Search.jsx
 }
+=======
+}
+>>>>>>> 0865d544c5fa719a986ab0602db7c36d9aa71a03:src/shop/Search.jsx

@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 
 const title = "More Then 60,000 Customers";
 
@@ -56,9 +56,9 @@ const LocationSprade = () => {
             {
                 clientsList.map((val,i)=>(
                     <div key={i} className="client-list">
-                        <link to="/sign-up">
+                        <Link to="/sign-up">
                         <span>{val.text}</span>
-                        </link>
+                        </Link>
                         <div className="client-thumb">
                             <img src={val.imgUrl} alt=""/>
                         </div>
