@@ -1,5 +1,5 @@
 import React from'react'
-
+import { Link } from 'react-router-dom'
 const ProductCards = ({GridList, products}) => {
 
     return(
@@ -19,7 +19,7 @@ const ProductCards = ({GridList, products}) => {
                    <a href='#'>
                     <i className='icofont-heart'></i>
                    </a>
-                   <link to={"/cart-page"}><i className='icofont-cart-alt'></i></link>
+                   <Link to={"/cart-page"}><i className='icofont-cart-alt'></i></Link>
                   </div>
                  </div>
 
@@ -43,18 +43,18 @@ const ProductCards = ({GridList, products}) => {
                   </div>
                  {/* product actual links */}
                  <div className='product-action-link'>
-                   <link to={`/shop/${product.id}`}><i className='icofont-eye'></i></link>
+                   <Link to={`/shop/${product.id}`}><i className='icofont-eye'></i></Link>
                    <a href='#'>
                     <i className='icofont-heart'></i>
                    </a>
-                   <link to={"/cart-page"}><i className='icofont-cart-alt'></i></link>
+                   <Link to={"/cart-page"}><i className='icofont-cart-alt'></i></Link>
                   </div>
                  </div>
 
                  {/* product content  */}
                  <div className='product-content'>
                     <h5>
-                        <link to={`/shop/${product.id}`}>{product.name}</link>
+                        <Link to={`/shop/${product.id}`}>{product.name}</Link>
                     </h5>
                     <p className='productRating'>
                         <Ratting/>
