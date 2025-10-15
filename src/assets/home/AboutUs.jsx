@@ -29,7 +29,12 @@ const AboutUs = () => {
             <div className="container">
                 <div className="section-wrapper">
                     <div className="row">
+<<<<<<< HEAD
                         <div className="col">
+=======
+                        <div className="col g-4 justify-content-center align-items-center row-cols=1 
+                        row-cols-md-2 row-cols-xl-3">
+>>>>>>> f31d2b6a2e14f3f7a7a8492819a5ef16ccbac8db
                         {
                             countList.map((val, i)=>(
                                 <div key={i} className="count-item">

@@ -1,7 +1,11 @@
 import React from 'react'
 const subTitle = "Save The Day";
 const title =(
+<<<<<<< HEAD
     <h2>Join on Day Long Free Workshop for <b>Advance <span>Mastering</span></b>on Sales</h2>
+=======
+    <h2 className='title'>Join on Day Long Free Workshop for <b>Advance <span>Mastering</span></b>on Sales</h2>
+>>>>>>> f31d2b6a2e14f3f7a7a8492819a5ef16ccbac8db
 )
 const desc = "Limited Time Offer! Hurry Up";
 
