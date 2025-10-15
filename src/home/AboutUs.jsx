@@ -1,6 +1,6 @@
 import React from "react";
 import CountUp from 'react-countup';
-
+import { Link } from "react-router-dom";
 const subTitle = "Why Choose Us";
 const title = "Become a Marchant";
 const desc = "Take courses on your any device with our app & learn all about business what you want. Just download & install & start to learn";
@@ -55,7 +55,7 @@ const AboutUs = () => {
                             <span className="subtitle">{subTitle}</span>
                             <h2 className="title">{title}</h2>
                             <p>{desc}</p>
-                            <link to="/sign-up" className="lab-btn">{btnText}</link>
+                            <Link to="/sign-up" className="lab-btn">{btnText}</Link>
                         </div>
                        </div>
 
