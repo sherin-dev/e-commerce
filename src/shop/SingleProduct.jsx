@@ -8,6 +8,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
 import {Autoplay} from "swiper/modules"
+import ProductDisplay from './ProductDisplay';
+import Tags from './Tags';
  
 const SingleProduct = () => {
     const[product, setproducts] = useState([]);
@@ -18,7 +20,7 @@ const SingleProduct = () => {
     },[])
 
      const result = product.filter((p) =>p.id === id);
-      console.log(result)
+    //   console.log(result);
 
     return(
         <div>
@@ -75,7 +77,7 @@ const SingleProduct = () => {
                                     <div className='post-content'>
                                         <div>
                                           {
-                                            result.map(item => <p key={item.id}>{item.name}</p>)
+                                            result.map(item => <ProductDisplay key={item.id} item={item}/>)
                                           }
                                         </div>
                                     </div>
@@ -83,12 +85,20 @@ const SingleProduct = () => {
                             </div>
                           </div>
                           {/* reviews */}
+                          <div className='review'>
+                            <Review/>
+                          </div>
                         </article>
                       </div>
 
 
                       {/* right side */}
-                      <div className='col-Ig-4 col-12'>Right Side</div>
+                      <div className='col-Ig-4 col-12'>
+                        <aside className='ps-Ig-4'>
+                          <PopularPost/>
+                          <Tags/>
+                        </aside>
+                      </div>
                     </div>
                 </div>
             </div>
