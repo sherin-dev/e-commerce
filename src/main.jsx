@@ -21,6 +21,10 @@ import {
 import Home from './home/Home.jsx';
 import Blog from './blog/Blog.jsx';
 import Shop from './shop/Shop.jsx';
+import Login from './components/Login.jsx';
+import SignUp from './components/SignUp.jsx';
+import About from './about/About.jsx';
+import Contact from './contact/Contact.jsx';
 
 const router = createBrowserRouter([
   {
@@ -29,7 +33,16 @@ const router = createBrowserRouter([
     children:[
       {path:"/",element:<Home/>},
       {path:"/blog",element:<Blog/>},
-      {path:"/shop",element:<Shop/>}
+      {path:"/shop",element:<Shop/>},
+      {path:"/login",element:<Login/>},
+      {path:"/sign-up",element:<SignUp/>},
+      {path:"/about",element:<About/>},
+      {path:"/contact",element:<Contact/>},
+
+
+
+
+
 
     ],
   
