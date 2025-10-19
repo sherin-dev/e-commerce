@@ -6,11 +6,14 @@ import Data from "../products.json"
 import ProductCards from './ProductCards';
 import Pagination from './Pagination';
 import ShopCategory from './ShopCategory';
+import PopularPost from './PopularPost';
+import Tags from './Tags';
+
 
 const Shop = () => {
     const [GridList,setGridList] = useState(true);
     const [products, setproducts] = useState(Data);
-    console.log(products);
+    // console.log(products);
 
     //pagination
     const [currentPage,setCurrentPage] = useState(1);
@@ -80,6 +83,8 @@ const Shop = () => {
                    setproducts={setproducts}
                    selectedCategory={selectedCategory}
                    /> 
+                   <PopularPost/>
+                   <Tags/>
                   </aside>
                 </div>
             </div>
