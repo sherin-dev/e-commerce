@@ -25,6 +25,7 @@ import Login from './components/Login.jsx';
 import SignUp from './components/SignUp.jsx';
 import About from './about/About.jsx';
 import Contact from './contact/Contact.jsx';
+import SingleBlog from './Blog/SingleBlog.jsx';
 
 const router = createBrowserRouter([
   {
@@ -33,17 +34,12 @@ const router = createBrowserRouter([
     children:[
       {path:"/",element:<Home/>},
       {path:"/blog",element:<Blog/>},
+      {path:"/blog/:1d",element:<SingleBlog/>},
       {path:"/shop",element:<Shop/>},
       {path:"/login",element:<Login/>},
       {path:"/sign-up",element:<SignUp/>},
       {path:"/about",element:<About/>},
       {path:"/contact",element:<Contact/>},
-
-
-
-
-
-
     ],
   
   },]
