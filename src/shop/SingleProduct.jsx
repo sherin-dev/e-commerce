@@ -4,7 +4,8 @@ import PageHeader from '../components/PageHeader';
 import Review from './Review';
 import PopularPost from './PopularPost';
 import { Swiper, SwiperSlide } from "swiper/react";
-
+// import productData from "../products.json"; // path inside src/
+import axios from "axios";
 // Import Swiper styles
 import "swiper/css";
 import { Autoplay, Navigation } from "swiper/modules";
@@ -15,12 +16,14 @@ const SingleProduct = () => {
   const [products, setProducts] = useState([]); // plural since it's a list
   const { id } = useParams();
 
+  // useEffect(() => {
+  //     setProducts(productData)
+  // }, []);
   useEffect(() => {
-    fetch("/src/products.json")
-      .then((res) => res.json())
-      .then((data) => setProducts(data))
-      .catch((err) => console.error("Failed to load products:", err));
-  }, []);
+  axios.get("/products.json")
+    .then((res) => setProducts(res.data))
+    .catch((err) => console.error("Error loading products:", err));
+}, []);
 
   // Ensure both are numbers for comparison
   const result = products.filter((p) => p.id === parseInt(id));
@@ -46,7 +49,7 @@ const SingleProduct = () => {
                           <Swiper
                             spaceBetween={30}
                             slidesPerView={1}
-                            // loop={true}
+                            Loop={true}
                             autoplay={{
                               delay: 2000,
                               disableOnInteraction: false,
