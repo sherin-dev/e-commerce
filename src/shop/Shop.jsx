@@ -17,10 +17,10 @@ const Shop = () => {
 
     //pagination
     const [currentPage,setCurrentPage] = useState(1);
-    const productsperPage = 12;
+    const productsPerPage = 12;
 
-    const indexOfLastProduct = currentPage * productsperPage;
-    const indexOfFirstProduct = indexOfLastProduct - productsperPage;
+    const indexOfLastProduct = currentPage * productsPerPage;
+    const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
     const currentProducts = products.slice(indexOfFirstProduct,indexOfLastProduct);
 
     // function to change the current page
@@ -32,9 +32,9 @@ const Shop = () => {
     const [selectedCategory,setSelectedCategory] = useState("All");
     const menuItems = [...new Set(Data.map((Val)=>Val.category))];
 
-    const filterItem =(cuncat) => {
+    const filterItem =(curcat) => {
       const newItem = Data.filter((newVal) =>{
-        return newVal.category === cuncat;
+        return newVal.category === curcat;
       })
       setSelectedCategory(curcat);
       setproducts(newItem);
@@ -47,17 +47,17 @@ const Shop = () => {
         <div className='shop-page padding-tb'>
           <div className="container">
             <div className="row justify-content-center">
-                <div className='col-Ig-8 col-12'>
+                <div className='col-lg-8 col-12'>
                   <article>
                     {/* layout and title here */}
                     <div className='shop-title d-flex flex-warp justify-content-between'>
                         <p>{showResults}</p>
                         <div className={`product-view-mode ${GridList ? "gridActive": "listActiver"}`}>
                            <a className='grid' onClick={() => setGridList(!GridList)}>
-                             <i className='iconfont-ghost'></i>
+                             <i className='icofont-ghost'></i>
                            </a>
                             <a className='list' onClick={() => setGridList(!GridList)}>
-                              <i className='iconfontlistine-dots'></i>
+                              <i className='icofont-listine-dots'></i>
                            </a>
                         </div>
                     </div>
@@ -66,14 +66,14 @@ const Shop = () => {
                         <ProductCards GridList={GridList} products={currentProducts}/>
                     </div>
                     <Pagination
-                    productsperPage={productsperPage}
+                    productsPerPage={productsPerPage}
                     totalProducts = {products.length}
                     paginate={paginate}
                     activePage = {currentPage}
                     />
                   </article>  
                 </div>
-                 <div className='col-Ig-4 col-12'>
+                 <div className='col-lg-4 col-12'>
                   <aside>
                     <Search products={products} GridList={GridList}/>
                    <ShopCategory 
