@@ -93,6 +93,7 @@ const CheckOutPage = () => {
                     role="tabpanel"
                     aria-labelledby="visa-tab"
                   >
+                    {/* visa tab content */}
                     <div className="my-4 mx-4">
                       <div className="text-center">
                         <h5>Credit Card</h5>
