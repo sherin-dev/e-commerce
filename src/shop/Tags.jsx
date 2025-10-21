@@ -12,7 +12,7 @@ const tagsList = [ { link: "#", text: "envato", }, { link: "#", text: "themefore
             <ul className="widget-wrapper">
                 {
                     tagsList.map((val, i) => (
-                        <li key={i}><a href={val.text}></a></li>
+                        <li key={i}><a href={val.link}>{val.text}</a></li>
                     ))
                 }
             </ul>

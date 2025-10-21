@@ -5,8 +5,7 @@ export const Search = ({ products, GridList }) => {
   const [searchTerm, setSearchTerm] = useState("");
 
   const filteredProducts = products.filter((product) =>
-    product.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+    product.name.toLowerCase().includes(searchTerm.toLowerCase()));
 
   return (
     <div className="widget widget-search">
@@ -19,9 +18,8 @@ export const Search = ({ products, GridList }) => {
           name="search"
           id="search"
           placeholder="Search..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
+          defaultValue={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}/>
         <button type="submit">
           <i className="icofont-search-2"></i>
         </button>
@@ -32,14 +30,14 @@ export const Search = ({ products, GridList }) => {
         {searchTerm &&
           filteredProducts.map((product) => (
             <Link key={product.id} to={`/shop/${product.id}`}>
-              <div className="d-flex gap-2 align-items-center mb-2">
-                <div className="pro-thumb flex-shrink-0">
+              <div className="d-flex gap-3 p-2">
+                <div className="pro-thumb h-25">
                   <img
                     src={product.img}
                     alt={product.name}
                     width={70}
                     height={70}
-                    className="rounded"
+                    className="flex-{grow|shrink}-0"
                   />
                 </div>
                 <div className="product-content">
