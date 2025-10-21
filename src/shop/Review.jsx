@@ -93,20 +93,10 @@ const Review = () => {
                   <ul className="lab-ul">
                     <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur,soluta?</li>
                     <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur,soluta?</li>
-                    <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur,soluta?</li>
-                    <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur,soluta?</li>
-                    <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur,soluta?</li>
-                    <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur,soluta?</li>
+                    <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur,soluta?</li>                  
                   </ul>
                 </div>
-               </div>
-               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, ex cupiditate quasi
-               temporibus consequuntur, fugit rem a ipsa aut culpa,
-               repudiandae officiis? Incidunt eaque quam eveniet harum architecto quas accusantium!
-               Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, ex cupiditate quasi
-               temporibus consequuntur, fugit rem a ipsa aut culpa,
-               repudiandae officiis? Incidunt eaque quam eveniet harum architecto quas accusantium!</p>
-
+               </div>              
           </div>
         </div>
         </>

@@ -25,7 +25,7 @@ const SingleProduct = () => {
     .catch((err) => console.error("Error loading products:", err));
 }, []);
 
-  // Ensure both are numbers for comparison
+  // filtering the products based on id
   const result = products.filter((p) => p.id === parseInt(id));
 
   return (
@@ -86,7 +86,7 @@ const SingleProduct = () => {
                       <div className="post-content">
                         {result.length > 0 ? (
                           result.map((item) => (
-                            <ProductDisplay key={item.id} item={item} />
+                            <ProductDisplay key={item.id} item={item}/>
                           ))
                         ) : (
                           <p>Loading product details...</p>
