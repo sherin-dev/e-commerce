@@ -3,11 +3,10 @@ import { Button, Modal } from 'react-bootstrap';
 import "../components/modal.css";
 import { useLocation, useNavigate } from 'react-router-dom';
 
-const CheckOutPage = () => {
+const CheckOutPage = ({ orderTotal }) => {
   const [show, setShow] = useState(false);
   const [activeTab, setActiveTab] = useState("visa");
 
-  // handle Tab change
   const handleTabChange = (tabId) => {
     setActiveTab(tabId);
   };
@@ -15,21 +14,20 @@ const CheckOutPage = () => {
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
 
-  // direct to home page
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
 
   const handleOrderConfirm = () => {
     alert("Your Order is placed successfully!");
-    localStorage.removeItem("Cart");
+    localStorage.removeItem("cart"); // make sure key matches your CartPage
     navigate(from, { replace: true });
   };
 
   return (
     <div className="modalCard">
       <Button variant="primary" className="py-2" onClick={handleShow}>
-        Proceed to Checkout
+        Proceed to Pay
       </Button>
 
       <Modal
@@ -44,6 +42,12 @@ const CheckOutPage = () => {
             <h5 className="px-3 mb-3 mt-3 text-center">Select your Payment Method</h5>
 
             <div className="modal-body">
+
+              {/* Display total amount here */}
+              <div className="text-center mb-3">
+                <h5>Total Amount: ${orderTotal}</h5>
+              </div>
+
               <div className="tabs mt-3">
                 <ul className="nav nav-tabs" id="myTab" role="tablist">
                   <li className="nav-item" role="presentation">
@@ -84,7 +88,7 @@ const CheckOutPage = () => {
                   </li>
                 </ul>
 
-                {/* tab content */}
+                {/* Tab content */}
                 <div className="tab-content" id="myTabContent">
                   {/* VISA content */}
                   <div

@@ -32,11 +32,11 @@ import PageHeader from '../components/PageHeader'
                           <p>{blog.desc}</p>
                         </div>
                         <div className="post-footer">
-                          <div className='pf-left'>
+                          {/* <div className='pf-left'>
                             <Link to={`/blog/${blog.id}`} className='lab-btn-text'>{blog.btnText}
                               <i className='icofont-external-link'></i>
                             </Link>
-                          </div>
+                          </div> */}
                           <div className='pf-right'>
                             <i className='icofont-comment'>
                               <span className='comment-count'>{blog.commentCount}</span>

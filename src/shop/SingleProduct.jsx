@@ -70,12 +70,12 @@ const SingleProduct = () => {
                             ))}
                           </Swiper>
 
-                          {/* Swiper navigation buttons */}
+                          {/* Swiper navigation buttons */}                                                
                           <div className="pro-single-prev">
-                            <i className="icofont-rounded-left"></i>
+                            <i className="icofont-rounded-right"></i>
                           </div>
                           <div className="pro-single-next">
-                            <i className="icofont-rounded-right"></i>
+                            <i className="icofont-rounded-left"></i>
                           </div>
                         </div>
                       </div>

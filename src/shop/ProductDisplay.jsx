@@ -58,6 +58,7 @@ const ProductDisplay = ({ item }) => {
     setColor("Select Color");
     setCoupon("");
   };
+  
 
   return (
     <div>

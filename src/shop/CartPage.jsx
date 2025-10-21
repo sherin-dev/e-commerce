@@ -140,7 +140,7 @@ const CartPage = () => {
                 </form>
 
                 <div>
-                  <CheckOutPage />
+                  <CheckOutPage orderTotal={orderTotal.toFixed(2)} />
                 </div>
               </div>
 
