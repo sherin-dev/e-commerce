@@ -29,7 +29,7 @@ const CheckOutPage = () => {
   return (
     <div className="modalCard">
       <Button variant="primary" className="py-2" onClick={handleShow}>
-        Proceed to Checkout
+        Proceed to Pay
       </Button>
 
       <Modal

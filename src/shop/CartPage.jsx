@@ -1,30 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import React, { useEffect, useState } from "react";
 import PageHeader from "../components/PageHeader";
 import delImgUrl from "../assets/images/shop/del.png";
 import CheckOutPage from "./CheckOutPage";
 
-import { Link } from "react-router-dom";
-import delImgUrl from "../assets/images/shop/del.png";
-import CheckOutPage from "./CheckOutPage"; // ✅ import this
-
 const CartPage = () => {
   const [cartItems, setCartItems] = useState([]);
 
-  useEffect(() => {
-    // fetch cart items from local storage
-  const [cartItems, setcartItems] = useState([]);
-
+  // Load cart items from localStorage
   useEffect(() => {
     const storedCartItems = JSON.parse(localStorage.getItem("cart")) || [];
     setCartItems(storedCartItems);
   }, []);
 
-  // calculate total price of a single item
+  // Update local storage helper
+  const updateLocalStorage = (cart) => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  };
+
+  // Calculate total price for each item
   const calculateTotalPrice = (item) => item.price * item.quantity;
 
-  // handle quantity increase
+  // Increase item quantity
   const handleIncrease = (item) => {
     const updatedCart = cartItems.map((cartItem) =>
       cartItem.id === item.id
@@ -32,10 +29,10 @@ const CartPage = () => {
         : cartItem
     );
     setCartItems(updatedCart);
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
+    updateLocalStorage(updatedCart);
   };
 
-  // handle quantity decrease
+  // Decrease item quantity
   const handleDecrease = (item) => {
     if (item.quantity > 1) {
       const updatedCart = cartItems.map((cartItem) =>
@@ -44,24 +41,24 @@ const CartPage = () => {
           : cartItem
       );
       setCartItems(updatedCart);
-      localStorage.setItem("cart", JSON.stringify(updatedCart));
+      updateLocalStorage(updatedCart);
     }
   };
 
-  // handle remove item
+  // Remove an item from the cart
   const handleRemoveItem = (item) => {
-    const updatedCart = cartItems.filter((cartItem) => cartItem.id !== item.id);
+    const updatedCart = cartItems.filter(
+      (cartItem) => cartItem.id !== item.id
+    );
     setCartItems(updatedCart);
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
+    updateLocalStorage(updatedCart);
   };
 
-  // calculate cart subtotal
+  // Calculate totals
   const cartSubtotal = cartItems.reduce(
     (total, item) => total + calculateTotalPrice(item),
     0
   );
-
-  // order total
   const orderTotal = cartSubtotal;
 
   return (
@@ -96,131 +93,6 @@ const CartPage = () => {
                           <Link to="/shop">{item.name}</Link>
                         </div>
                       </td>
-
-                      <td className="cat-price">${item.price}</td>
-                      <td className="cat-quantity">
-                        <div className="cart-plus-minus">
-                          <div
-                            className="dec qtybutton"
-                            onClick={() => handleDecrease(item)}
-                          >
-                            -
-                          </div>
-                          <input
-                            type="text"
-                            className="cart-plus-minus-box"
-                            value={item.quantity}
-                            readOnly
-                          />
-                          <div
-                            className="inc qtybutton"
-                            onClick={() => handleIncrease(item)}
-                          >
-                            +
-                          </div>
-                        </div>
-                      </td>
-                      <td className="cat-toprice">${calculateTotalPrice(item)}</td>
-                      <td className="cat-edit">
-                        <a href="#" onClick={() => handleRemoveItem(item)}>
-                          <img src={delImgUrl} alt="Delete" />
-                        </a>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-
-            {/* Cart Bottom */}
-            <div className="cart-bottom">
-              {/* Checkout Box */}
-              <div className="cart-checkout-box">
-                <form className="coupon">
-                  <input
-                    className="cart-page-input-text"
-                    type="text"
-                    name="coupon"
-                    id="coupon"
-                    placeholder="Coupon code..."
-                  />
-                  <input type="submit" value="Apply Coupon" />
-                </form>
-    setcartItems(storedCartItems);
-  }, []);
-
-  const updateLocalStorage = (cart) => {
-    localStorage.setItem("cart", JSON.stringify(cart));
-  };
-
-  const calculateTotalPrice = (item) => item.price * item.quantity;
-
-  const handleIncrease = (item) => {
-    const updatedCart = cartItems.map((cartItem) =>
-      cartItem.id === item.id
-        ? { ...cartItem, quantity: cartItem.quantity + 1 }
-        : cartItem
-    );
-    setcartItems(updatedCart);
-    updateLocalStorage(updatedCart);
-  };
-
-  const handleDecrease = (item) => {
-    const updatedCart = cartItems.map((cartItem) =>
-      cartItem.id === item.id && cartItem.quantity > 1
-        ? { ...cartItem, quantity: cartItem.quantity - 1 }
-        : cartItem
-    );
-    setcartItems(updatedCart);
-    updateLocalStorage(updatedCart);
-  };
-
-  const handleRemoveItem = (item) => {
-    const updatedCart = cartItems.filter(
-      (cartItem) => cartItem.id !== item.id
-    );
-    setcartItems(updatedCart);
-    updateLocalStorage(updatedCart);
-  };
-
-  const cartSubtotal = cartItems.reduce(
-    (total, item) => total + calculateTotalPrice(item),
-    0
-  );
-
-  const orderTotal = cartSubtotal;
-
-  return (
-    <div>
-      <PageHeader title={"Shop Cart"} curPage={"Cart Page"} />
-      <div className="shop-cart padding-tb">
-        <div className="container">
-          <div className="section-wrapper">
-            {/* cart top */}
-            <div className="cart-top">
-              <table>
-                <thead>
-                  <tr>
-                    <th className="cat-product">Product</th>
-                    <th className="cat-price">Price</th>
-                    <th className="cat-quantity">Quantity</th>
-                    <th className="cat-toprice">Total</th>
-                    <th className="cat-edit">Edit</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {cartItems.map((item, index) => (
-                    <tr key={index}>
-                      <td className="product-item cat-product">
-                        <div className="p-thumb">
-                          <Link to="/shop">
-                            <img src={item.img} alt="" />
-                          </Link>
-                        </div>
-                        <div className="p-content">
-                          <Link to="/shop">{item.name}</Link>
-                        </div>
-                      </td>
                       <td className="cat-price">${item.price}</td>
                       <td className="cat-quantity">
                         <div className="cart-plus-minus">
@@ -248,9 +120,13 @@ const CartPage = () => {
                         ${calculateTotalPrice(item).toFixed(2)}
                       </td>
                       <td className="cat-edit">
-                        <a href="#" onClick={() => handleRemoveItem(item)}>
-                          <img src={delImgUrl} alt="" />
-                        </a>
+                        <button
+                          type="button"
+                          onClick={() => handleRemoveItem(item)}
+                          className="border-0 bg-transparent"
+                        >
+                          <img src={delImgUrl} alt="Delete" />
+                        </button>
                       </td>
                     </tr>
                   ))}
@@ -258,7 +134,7 @@ const CartPage = () => {
               </table>
             </div>
 
-            {/* cart bottom */}
+            {/* Cart Bottom */}
             <div className="cart-bottom">
               <div className="cart-checkout-box">
                 <form className="coupon">
@@ -266,24 +142,17 @@ const CartPage = () => {
                     className="cart-page-input-text"
                     type="text"
                     name="coupon"
-                    placeholder="Coupon code ...."
+                    placeholder="Coupon code..."
                   />
                   <input type="submit" value="Apply Coupon" />
                 </form>
 
-                <div>
+                <div className="checkout-container mt-4">
                   <CheckOutPage />
                 </div>
               </div>
-                <form action="">
-                  <input type="submit" value="Update Cart" />
-                  <div>
-                    <CheckOutPage />
-                  </div>
-                </form>
-              </div>
 
-              {/* Shipping Box */}
+              {/* Shipping & Totals */}
               <div className="shipping-box">
                 <div className="row">
                   <div className="col-md-6 col-12">
@@ -304,39 +173,6 @@ const CartPage = () => {
                       <input
                         type="text"
                         name="postalcode"
-                        id="postalcode"
-                        placeholder="Postcode/ZIP"
-                        className="cart-page-input-text"
-                      />
-                      <button type="submit">Update Address</button>
-                    </div>
-                  </div>
-              <div className="shipping-box">
-                <div className="row">
-                  <div className="col-md-6 col-12">
-                    <div className="calculate-shiping">
-                      <h3>Calculate Shipping</h3>
-                      <div className="outline-select">
-                        <select>
-                          <option value="uk">United Kingdom (UK)</option>
-                          <option value="us">United States (US)</option>
-                          <option value="pak">Pakistan</option>
-                          <option value="ind">India</option>
-                          <option value="np">Nepal</option>
-                        </select>
-                      </div>
-                      <div className="outline-select shipping-select">
-                        <select>
-                          <option value="ny">New York</option>
-                          <option value="ld">London</option>
-                          <option value="dh">Dhaka</option>
-                          <option value="kr">Karachi</option>
-                          <option value="nd">New Delhi</option>
-                        </select>
-                      </div>
-                      <input
-                        type="text"
-                        name="postalcode"
                         placeholder="Postcode / ZIP"
                         className="cart-page-input-text"
                       />
@@ -350,35 +186,9 @@ const CartPage = () => {
                       <ul className="lab-ul">
                         <li>
                           <span className="pull-left">Cart Subtotal</span>
-                          <p className="pull-right">${cartSubtotal.toFixed(2)}</p>
-                        </li>
-                        <li>
-                          <span className="pull-left">Shipping and Handling</span>
-                          <p className="pull-right">Free Shipping</p>
-                        </li>
-                        <li>
-                          <span className="pull-left">Order Total</span>
-                          <p className="pull-right">${orderTotal.toFixed(2)}</p>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {/* Cart Bottom Ends */}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-                  <div className="col-md-6 col-12">
-                    <div className="cart-overview">
-                      <h3>Cart Totals</h3>
-                      <ul className="lab-ul">
-                        <li>
-                          <span className="pull-left">Cart Subtotal</span>
-                          <p className="pull-right">${cartSubtotal}</p>
+                          <p className="pull-right">
+                            ${cartSubtotal.toFixed(2)}
+                          </p>
                         </li>
                         <li>
                           <span className="pull-left">
@@ -397,7 +207,7 @@ const CartPage = () => {
                   </div>
                 </div>
               </div>
-              {/* shipping box end */}
+              {/* Cart Bottom Ends */}
             </div>
           </div>
         </div>
